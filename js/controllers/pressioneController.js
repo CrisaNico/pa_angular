@@ -1,9 +1,14 @@
 app.controller('PressioneController',["jsonService",function (jsonService){
         var vm = this;
-        vm.test = 123;
+        
         
         vm.init = function(){
-            jsonService.getPressione();
+            jsonService.getPressione(function(response){
+                console.log(response.data);
+                vm.list = response.data;
+            });
+            
+            
         };
         
         vm.init();
