@@ -1,1 +1,1 @@
-var app = angular.module('misurazione');
+var app = angular.module('misurazione', []);

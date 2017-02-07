@@ -1,3 +1,4 @@
-app.controller('PressioneController',[$scope, function($scope){
-        
-}]);
+app.controller('PressioneController',function (){
+        var vm = this;
+        vm.test = 123;
+});

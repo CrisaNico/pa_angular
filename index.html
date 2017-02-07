@@ -13,13 +13,14 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/bootstrap/css/bootstrap-theme.min.css" />
         <link rel="stylesheet" href="css/style.css" />
     </head>
-    <body ng-app="misurazione">
-        <div>TODO write content</div>
+    <body  ng-app="misurazione">
+        <div ng-controller="PressioneController as pc">{{ pc.test }}</div>
     </body>
     
     <script type="text/javascript" src="lib/jquery/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="lib/angular/angular.min.js"></script>
     <script type="text/javascript" src="css/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controllers/pressioneController.js"></script>
     
 </html>
