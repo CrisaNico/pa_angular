@@ -1,4 +1,4 @@
-angular.modile('misurazione').controller('PressioneController',["jsonService",function (jsonService){
+angular.module('misurazione').controller('PressioneController',["jsonService",function (jsonService){
         var vm = this;
 
         vm.populate = function (response) {
