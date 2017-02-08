@@ -1,29 +1,42 @@
-app.service('jsonService', ["$http", function($http){
-    var vm = this;
-    var data = [];
+angular.module('misurazione').service('jsonService', ["$http", function($http){
+
+
     var backend = "http://localhost/pa/elenco.php";
-    
-    var getPressione = function(success){
-        $http.get(backend)
-                .then( success ,
-                    function(data){console.log("error:"); console.log(data);} );
+    var onError = function (response)
+    {console.log("Errore di chiamata: ", response)};
+
+
+
+    var getPressione = function(ready){
+        $http.get(backend).then(
+            ready,
+            onError)
     };
     
-    var deletePressione = function(success, id){
-      $http.get(backend+"?act=del&id="+id)
-              .then( success,
-                   function(data){console.log("error"); console.log(data);} );
+    var deletePressione = function(ready, id){
+      $http.get(backend+"?act=del&id="+id).then(
+          ready,
+          onError)
     };
     
-    var addPressione = function(){
-        
+    var addPressione = function(misurazione, ready){
+        $http({
+            url : backend,
+            method : "POST",
+            data : misurazione
+            //            header : {"content-type" : "application/json"}  $http.post(url, vm.misurazione).then(vm.populate);
+
+        }).then(
+            ready,
+            onError)
     };
     
     
     
     
     return {
-        "getPressione" : getPressione,
-        "deletePressione" : deletePressione
+        getPressione : getPressione,
+        deletePressione : deletePressione,
+        addPressione : addPressione
     };
 }]);

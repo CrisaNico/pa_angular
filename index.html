@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -14,39 +9,44 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/style.css" />
     </head>
     <body ng-app="misurazione">
-        <div ng-controller="PressioneController as pc">
+        <div ng-controller="PressioneController as pc" class="col-md-9">
         
-            <form class="form-control">
-                <input type="date" name="datamisurazione" required/>
-                <input type="number" name="sistolica" placeholder="sistolica" required/>
-                <input type="number" name="diastolica" placeholder="diastolica" required/>
-                <input type="number" name="peso" placeholder="peso" required />
-                <button class="btn-success" ng-click="salva()">Salva</button>
+            <form action="?p=elenco" method="POST" class="form-control">
+                <caption>Nuova misurazione</caption>
+                <input ng-model="pc.misurazione.datamisurazione" type="date" name="datamisurazione" required/>
+                <input ng-model="pc.misurazione.sistolica" type="number" name="sistolica" placeholder="sistolica" required/>
+                <input ng-model="pc.misurazione.diastolica" type="number" name="diastolica" placeholder="diastolica" required/>
+                <input ng-model="pc.misurazione.peso" type="number" name="peso" placeholder="peso" required />
+                <button type="submit" class="btn-success" ng-click="pc.addRow()">Salva</button>
+                <button type="reset" ng-click="pc.clear()">Reset</button>
             </form>
+
             <br/>
-            <table class="table">
-                <tr ng-repeat="d in pc.list ">
+            <table class="table table-bordered" id="Tabpc">
+                <tr>
+                    <th>Data</th>
+                    <th>Sistolica</th>
+                    <th>Diastolica</th>
+                    <th>Peso</th>
+                </tr>
+                <tr ng-repeat="(k,x) in pc.list">
                     <td>
-                        {{d.datamisurazione}}
+                        {{x.datamisurazione}}
                     </td>
                     <td>
-                        {{d.sistolica}}
+                        {{x.sistolica}}
                     </td>
                     <td>
-                        {{d.diastolica}}
+                        {{x.diastolica}}
                     </td>
                     <td>
-                        {{d.peso}}
+                        {{x.peso}}
                     </td>
                     <td>
-                        <button class="btn-danger" ng-click="pc.delete(id)">Elimina</button>
+                        <button class="btn-danger" value="remove" ng-click="pc.removeRow(k)">Elimina</button>
                     </td>
                 </tr>
             </table>
-            
-            
-            
-            
         </div>
     </body>
     
