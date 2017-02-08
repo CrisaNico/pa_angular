@@ -16,8 +16,19 @@ and open the template in the editor.
     <body ng-app="misurazione">
         <div ng-controller="PressioneController as pc">
         
+            <form class="form-control">
+                <input type="date" name="datamisurazione" required/>
+                <input type="number" name="sistolica" placeholder="sistolica" required/>
+                <input type="number" name="diastolica" placeholder="diastolica" required/>
+                <input type="number" name="peso" placeholder="peso" required />
+                <button class="btn-success" ng-click="salva()">Salva</button>
+            </form>
+            
             <table class="table">
                 <tr ng-repeat="d in pc.list ">
+                    <td>
+                        {{d.datamisurazione}}
+                    </td>
                     <td>
                         {{d.sistolica}}
                     </td>
@@ -25,10 +36,17 @@ and open the template in the editor.
                         {{d.diastolica}}
                     </td>
                     <td>
-                        {{d.datamisurazione}}
+                        {{d.peso}}
+                    </td>
+                    <td>
+                        <button class="btn-danger" ng-click="elimina()">Elimina</button>
                     </td>
                 </tr>
             </table>
+            
+            
+            
+            
         </div>
     </body>
     
