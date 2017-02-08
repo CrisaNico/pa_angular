@@ -9,8 +9,21 @@ app.service('jsonService', ["$http", function($http){
                     function(data){console.log("error:"); console.log(data);} );
     };
     
+    var deletePressione = function(success, id){
+      $http.get(backend+"?act=del&id="+id)
+              .then( success,
+                   function(data){console.log("error"); console.log(data);} );
+    };
+    
+    var addPressione = function(){
+        
+    };
+    
+    
+    
     
     return {
-        "getPressione" : getPressione
+        "getPressione" : getPressione,
+        "deletePressione" : deletePressione
     };
 }]);

@@ -23,7 +23,7 @@ and open the template in the editor.
                 <input type="number" name="peso" placeholder="peso" required />
                 <button class="btn-success" ng-click="salva()">Salva</button>
             </form>
-            
+            <br/>
             <table class="table">
                 <tr ng-repeat="d in pc.list ">
                     <td>
@@ -39,7 +39,7 @@ and open the template in the editor.
                         {{d.peso}}
                     </td>
                     <td>
-                        <button class="btn-danger" ng-click="elimina()">Elimina</button>
+                        <button class="btn-danger" ng-click="pc.delete(id)">Elimina</button>
                     </td>
                 </tr>
             </table>
